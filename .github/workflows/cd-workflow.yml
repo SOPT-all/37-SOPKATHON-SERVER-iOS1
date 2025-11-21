@@ -40,7 +40,7 @@ jobs:
           docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} .
           docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
 
-      - name: 🚀 deploy to server
+      - name: 🚀 deploy to server (blue-green)
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -48,25 +48,11 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           port: ${{ secrets.EC2_PORT }}
           script: |
-            echo "✋🏻Stopping existing container"
-            sudo docker stop ${{ secrets.CONTAINER_NAME }} || true
-            sudo docker rm ${{ secrets.CONTAINER_NAME }} || true
-            ENV_FILE='/etc/37-sopkathon/.env'
-
+            # 1) 새 이미지 먼저 pull
             echo "🥳 Pulling new image"
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
 
-            echo "🌱 Running new container"
-             sudo docker run -d \
-              -p 8080:8080 \
-              --name ${{ secrets.CONTAINER_NAME }} \
-              --env-file "$ENV_FILE" \
-              ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
-
-
-            echo "🚮 Cleaning up old images"
-            sudo docker image prune -f
-
-
-            echo "🚮 Cleaning up old images"
-            sudo docker image prune -f
+            # 2) deploy.sh 실행 (blue/green 전환)
+            cd /home/ec2-user
+            sudo chmod +x deploy.sh
+            sudo DOCKER_IMAGE=${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} ./deploy.sh
