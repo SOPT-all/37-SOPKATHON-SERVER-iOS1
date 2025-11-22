@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.sopt.__sopkathon.domain.dto.RoomCreateRequest;
-import org.sopt.__sopkathon.domain.roommateinfo.entity.RoommateInfo;
 
 @Entity
 @Getter

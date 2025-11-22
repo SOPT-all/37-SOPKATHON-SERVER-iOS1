@@ -1,17 +1,14 @@
 package org.sopt.__sopkathon.domain.room.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.sopt.__sopkathon.domain.dto.RoomCreateRequest;
-import org.sopt.__sopkathon.domain.dto.RoomCreateResponse;
+import org.sopt.__sopkathon.domain.room.dto.request.RoomCreateRequest;
+import org.sopt.__sopkathon.domain.room.dto.response.RoommateInfoResponse;
 import org.sopt.__sopkathon.domain.room.service.RoomService;
 import org.sopt.__sopkathon.domain.room.dto.response.RoomResponse;
-import org.sopt.__sopkathon.domain.room.service.RoomService;
 import org.sopt.__sopkathon.domain.roommateinfo.dto.response.RoommateResponse;
 import org.sopt.__sopkathon.domain.roommateinfo.service.RoommateInfoService;
 import org.sopt.__sopkathon.global.annotation.CustomExceptionDescription;
-import org.sopt.__sopkathon.global.config.swagger.SwaggerResponseDescription;
 import org.sopt.__sopkathon.global.dto.response.BaseResponse;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,9 +33,8 @@ public class RoomController {
     @Operation(summary = "룸메이트 소개서 생성")
     @PostMapping
     @CustomExceptionDescription(COMMON)
-    public BaseResponse<Void> createRoom(@RequestBody RoomCreateRequest request) {
-        roomService.createRoom(request);
-        return BaseResponse.create("룸메이트 소개서 생성 성공");
+    public BaseResponse<RoommateInfoResponse> createRoom(@RequestBody RoomCreateRequest request) {
+        return BaseResponse.create(roomService.createRoom(request),"룸메이트 소개서 생성 성공");
     }
 
 
