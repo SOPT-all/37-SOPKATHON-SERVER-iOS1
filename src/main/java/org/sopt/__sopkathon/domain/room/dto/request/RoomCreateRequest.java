@@ -15,5 +15,6 @@ public record RoomCreateRequest(String location,
                                 DrinkingCapacity drinkingCapacity,
                                 Cleanliness cleanliness,
                                 Smoke smoke,
+                                String description,
                                 int washerCount) {
 }

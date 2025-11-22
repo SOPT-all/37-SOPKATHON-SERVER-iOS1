@@ -47,7 +47,8 @@ public class RoomService {
                         request.homeFrequency(),
                         request.drinkingCapacity(),
                         request.cleanliness(),
-                        request.smoke()))));
+                        request.smoke(),
+                        request.description()))));
 
         RoommateInfo roommateInfo = RoommateInfo.create(content, room);
 
