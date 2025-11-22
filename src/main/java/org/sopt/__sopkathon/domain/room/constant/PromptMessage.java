@@ -1,7 +1,16 @@
 package org.sopt.__sopkathon.domain.room.constant;
 
 public class PromptMessage {
-    public static final String  SYSTEM_PROMPT="";
+    public static final String SYSTEM_PROMPT = "너는 프랑스에서 쉐어하우스를 사용했던 사람의 룸메이트에 대한 소개서를 작성해야해. " +
+                                               "다음 사람을 위한거니까 최대한 부드러운 어투(경어체)로 대답해줘";
 
-    public static final String  USER_PROMPT="";
+    public static final String USER_PROMPT = "이 사람과의 친밀도는 %s, 이 사람이 집에 있는 빈도는 %s, 주량은 %s, 청결도는 %s, 흡연 여부는 %s야," +
+                                             "이 정보를 바탕으로 소개서를 작성해줘" +
+                                             "첫 문장은, 내 전 룸메이트에 대한 간단한 요약을 포함해서 '제 X 룸메는 ~~한 사람입니다로 시작하게 해줘" +
+                                             "예를 들면, '저 X 룸메는 제가 봤던 사람들 중 가장 다정한 사람입니다. 주로 저녁을 집에서 먹는 편입니다. 간단히 요리를 해주면 아주 고마워하고, 술은 잘 못해서 가벼운 치맥 정도만 함께 부탁드려요. 생활 습관은 깔끔한 편이라 집을 바로 정리하는 스타일이니, 함께 지내실 때도 가볍게 맞춰주시면 좋습니다.\n" +
+                                             "담배 냄새는 힘들어하셔서 흡연을 하신다면 냄새가 남지 않도록 배려해주시면 감사하겠습니다.\n" +
+                                             "새로운 분과도 따뜻하게 지내시길 바랍니다' 처럼 작성해줘." +
+                                             "500자 내외로 작성해줘"
+
+                                             ;
 }

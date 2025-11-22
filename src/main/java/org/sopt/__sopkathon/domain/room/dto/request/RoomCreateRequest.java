@@ -1,4 +1,4 @@
-package org.sopt.__sopkathon.domain.dto;
+package org.sopt.__sopkathon.domain.room.dto.request;
 
 import org.sopt.__sopkathon.domain.room.entity.Cleanliness;
 import org.sopt.__sopkathon.domain.room.entity.DrinkingCapacity;

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.sopt.__sopkathon.domain.dto.RoomCreateRequest;
 import org.sopt.__sopkathon.domain.room.entity.Room;
 
 @Entity
@@ -20,16 +19,17 @@ public class RoommateInfo {
     @Column(name="roommateinfo_id",nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
     private Room room;
 
-    public static RoommateInfo create(String content) {
+    public static RoommateInfo create(String content, Room room) {
         RoommateInfo roommateInfo = RoommateInfo.builder()
                 .content(content)
+                .room(room)
                 .build();
         return roommateInfo;
     }
