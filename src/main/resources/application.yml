@@ -20,7 +20,12 @@ spring:
         format_sql: true
         show_sql: true
         highlight_sql: true
-
+openai:
+  secret-key: ${OPEN_AI_KEY}
+  model: ${OPEN_AI_MODEL}
+  max-tokens: ${OPEN_AI_MAX_TOKEN}
+  temperature: ${OPEN_AI_TEMPERATURE}
+  base-url: https://api.openai.com/v1
 ---
 spring:
   config:
