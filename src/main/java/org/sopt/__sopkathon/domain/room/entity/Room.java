@@ -33,7 +33,4 @@ public class Room {
 
     @Column(nullable = false)
     private String period;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    private RoommateInfo roommateInfo;
 }
