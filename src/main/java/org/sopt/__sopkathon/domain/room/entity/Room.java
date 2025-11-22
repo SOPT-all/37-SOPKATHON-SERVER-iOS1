@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.sopt.__sopkathon.domain.dto.RoomCreateRequest;
 import org.sopt.__sopkathon.domain.roommateinfo.entity.RoommateInfo;
 
 @Entity
@@ -36,4 +37,16 @@ public class Room {
 
     @Column(nullable = false)
     private int washerCount;
+
+    public static Room create(String location,int monthlyRent,int roomCount,int bathroomCount,String period,int washerCount) {
+        Room room = Room.builder()
+                .location(location)
+                .monthlyRent(monthlyRent)
+                .roomCount(roomCount)
+                .bathroomCount(bathroomCount)
+                .period(period)
+                .washerCount(washerCount)
+                .build();
+        return room;
+    }
 }
