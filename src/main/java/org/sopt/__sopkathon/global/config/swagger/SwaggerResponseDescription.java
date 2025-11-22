@@ -19,6 +19,9 @@ public enum SwaggerResponseDescription {
     GET_ROOMMATE_INFO(new LinkedHashSet<>(Set.of(
             ROOMMATE_NOT_FOUND,
             ROOM_NOT_FOUND
+    ))),
+    GET_ROOM_INFO(new LinkedHashSet<>(Set.of(
+            ROOM_NOT_FOUND
     )))
 
     ;
