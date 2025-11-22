@@ -23,5 +23,6 @@ public class RoommateInfo {
     private String content;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
     private Room room;
 }
