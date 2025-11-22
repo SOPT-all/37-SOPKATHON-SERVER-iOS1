@@ -33,4 +33,7 @@ public class Room {
 
     @Column(nullable = false)
     private String period;
+
+    @Column(nullable = false)
+    private int washerCount;
 }
