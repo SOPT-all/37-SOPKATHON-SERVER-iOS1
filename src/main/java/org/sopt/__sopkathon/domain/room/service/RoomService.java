@@ -54,7 +54,7 @@ public class RoomService {
 
         roommateInfoRepository.save(roommateInfo);
 
-        return RoommateInfoResponse.from(roommateInfo);
+        return RoommateInfoResponse.from(room, roommateInfo);
     }
     public RoomResponse getRoomInfo(Long roomId) {
         Room room = roomRepository.findById(roomId).orElseThrow(() -> new CustomException(ROOM_NOT_FOUND));
